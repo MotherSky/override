@@ -1,0 +1,13 @@
+
+int main()
+{
+	void *buff;
+	int pid = fork();
+	if (pid == 0)
+	{
+		gets(&buff);
+	}
+	else
+		return 0;
+	return 0;
+}

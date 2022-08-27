@@ -1,0 +1,46 @@
+
+
+
+
+int store_number(int tab)
+{
+    printf(" Number: ");
+    int number = get_unum(); // scanf("%u", &number);
+    printf(" Index: ");
+    int index = get_unum();
+    if ((index % 3 == 0) || (number >> 0x18 == 0xb7)){
+        puts(" *** ERROR! ***");
+        puts("   This index is reserved for wil!");
+        puts(" *** ERROR! ***");
+        return(1);
+    }
+    else {
+        *(unsigned int *)(index * 4 + tab) = number;
+        return(0);
+    }
+}
+
+int main(){
+    puts(
+    "----------------------------------------------------\n  Welcome to wil\'s crappy number stora ge service!   \n----------------------------------------------------\n Commands:                                           \n    store - store a number into the data storage    \n    read   - read a number from the data storage     \n    quit  - exit the program                         \n----------------------------------------------------\n   wil has reserved some storage :>                  \n----------------------------------------------------\n"
+    );
+    char command[10];
+    void *tab;
+    while(1){
+        printf("\n> ");
+        scanf("%s", command);
+        if(strncmp(command, "store", 5) == 0){
+            store(&tab);
+        }
+        else if(strncmp(command, "read", 4) == 0){
+            read(&tab);
+        }
+        else if(strncmp(command, "quit", 4) == 0){
+            exit(0);
+        }
+        else{
+            printf("\nInvalid command.\n");
+        }
+    }
+    return(0);
+}

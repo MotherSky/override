@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int auth(char *user){
+    int i = 0;
+    int leng = strlen(user);
+    int serial = ((int)user[3] ^ 0x1337U) + 0x5eeded - (int)user[3];
+    int temp;
+
+    while(i < leng){
+        temp = (((int)user[i] ^ serial) % 0x539);
+    	serial = serial + temp;
+        i++;
+    } 
+    return(serial);
+}
+
+int main(int ac, char **av){
+    printf("%d\n",auth(av[1]));
+    return(0);
+}

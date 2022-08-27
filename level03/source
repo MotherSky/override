@@ -1,0 +1,41 @@
+
+iny dectypt(int av1)
+{
+	char *hash = "Q}|u`sfg~sf{}|a3";
+    int i = 0;
+    char ret[20];
+    while(i < 17){
+        ret[i] = hash[i] ^ 18;
+        i++;
+    }
+    ret[i] = '\0';
+    printf("%s\n", ret);
+    i = 0;
+    char *pass = "Congratulations!";
+    while(i < 17){
+        if (ret[i] != pass[i]){
+            printf("\nInvalid Password");
+            exit(0);
+        }
+    }
+    system("/bin/sh");
+    return 0;
+}
+
+int test(int av1, int av2)
+{
+	int ecx = av2 - av1;
+	int eax;
+	if (ecx > 0 && ecx < 10 || ecx > 0xf && ecx < 0x16)
+		return (decrypt(ecx));
+	else
+		return (decrypt(rand()));
+}
+
+int main()
+{
+	int num;
+	scanf("%d", num);
+	test(mum, 0x1337d00d);
+	return 0;
+}

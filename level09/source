@@ -1,0 +1,45 @@
+
+void secret_backdoor(void)
+{
+    char buff[128];
+
+    fgets(buff, 0x80, stdin);
+    system(buff);
+    return;
+}
+
+int handle_msg()
+{
+    char buff[140];
+    set_username(&buff);
+    set_msg(&buff);
+    return (puts(">: Msg sent!"));
+}
+
+void set_username(long buff){
+    char temp[17];
+    puts(">: Enter your username");
+    printf(">>: ");
+    fgets(temp,0x80,stdin);
+    int i = 0;
+    while (i < 41 && temp[i] != '\0'){
+        *(buff + 140 + i) = temp[i]; /////
+        i++;
+    }
+}
+
+void *set_msg(char *buff)
+{
+    char temp[128];
+    puts(">: Msg @Unix-Dude");
+    printf(">>: ");
+    fgets(temp, 0x400, stdin);
+    strncpy(buff, temp, (long)*(buff + 180));
+    return;
+}
+
+int main()
+{
+    handle_msg()
+    return 0;
+}
